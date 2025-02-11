@@ -1,12 +1,23 @@
-<p style="font-size: larger; font-weight: 600">{{ "All Todos" | uppercase }}</p>
+<p style="font-size: larger; font-weight: 600; margin-bottom: 1rem">
+  {{ "All Todos" | uppercase }}
+</p>
+
+<form>
+  <label>Filter Todos</label><br />
+  <input
+    name="searchTerm"
+    [(ngModel)]="searchTerm"
+    placeholder="search todo..."
+  />
+</form>
 
 <!-- <p *ngIf="!todoItems().length" style="margin-top: 1rem">Loading...</p> -->
 @if (!todoItems().length) {
-<p style="margin-top: 1rem">Loading...</p>
+<p style="margin-top: 1rem; margin-bottom: 1rem">Loading...</p>
 }
 
-<ul style="padding-left: 1rem">
-  @for (todo of todoItems(); track todo.id) {
+<ul style="padding-left: 1rem; margin-top: 1rem">
+  @for (todo of todoItems() | filterTodos : searchTerm(); track todo.id) {
   <app-todo-item [todo]="todo" (todoToggled)="updateTodoList($event)" />
   }
 </ul>
