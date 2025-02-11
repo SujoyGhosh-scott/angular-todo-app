@@ -1,0 +1,12 @@
+<p style="font-size: larger; font-weight: 600">{{ "All Todos" | uppercase }}</p>
+
+<!-- <p *ngIf="!todoItems().length" style="margin-top: 1rem">Loading...</p> -->
+@if (!todoItems().length) {
+<p style="margin-top: 1rem">Loading...</p>
+}
+
+<ul style="padding-left: 1rem">
+  @for (todo of todoItems(); track todo.id) {
+  <app-todo-item [todo]="todo" (todoToggled)="updateTodoList($event)" />
+  }
+</ul>

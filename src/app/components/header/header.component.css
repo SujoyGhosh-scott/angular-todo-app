@@ -1,0 +1,23 @@
+header {
+  background: gray;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+header > div {
+  margin-left: auto;
+}
+
+header > div > span {
+  margin-left: 1rem;
+}
+header > div > span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+nav {
+  font-size: x-large;
+  font-weight: bold;
+}
